@@ -8,18 +8,18 @@
   <!-- END - Include -->
   
   <!-- BGN - Robot description -->
-  <m_link_box name="${link_00_name}" 
+  <m_link_cylinder name="${link_00_name}" 
               origin_rpy="0 0 0" origin_xyz="0 0 0"
-              mass="1024"
-              ixx="170.667" ixy="0" ixz="0"
-              iyy="170.667" iyz="0"
-              izz="170.667"
-              size="1 1 3" />
-  
+              mass="10240"
+              ixx="1700.667" ixy="0" ixz="0"
+              iyy="1700.667" iyz="0"
+              izz="1700.667"
+              length="4" radius="0.5" />
+
               
   <m_joint name="${link_00_name}__${link_01_name}" type="revolute"
            axis_xyz="0 0 1"
-           origin_rpy="-1.57 0 0" origin_xyz="0 0.5 0.7"
+           origin_rpy="-1.57 0 0" origin_xyz="0 0.5 1.5"
            parent="${link_00_name}" child="${link_01_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
@@ -168,113 +168,14 @@
   </link>
 
 
-
-  <link name="right_base">
-    <visual>
-      <geometry>
-        <box size="1 0.1 0.1"/>
-      </geometry>
-      <material name="white"/>
-      <origin xyz="0 -0.4 -1.5"/>
-    </visual>
-  </link>
-  <joint name="right_base_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="right_base"/>
-    <origin xyz="0 0 -0.05"/>
-  </joint>
-
-  <link name="right_front_wheel">
-    <visual>
-      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
-      <geometry>
-        <cylinder length="0.1" radius="0.035"/>
-      </geometry>
-      <material name="black"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-    </visual>
-  </link>
-  <joint name="right_front_wheel_joint" type="continuous">
-    <axis rpy="0 0 0" xyz="0 3 0"/>
-    <parent link="right_base"/>
-    <child link="right_front_wheel"/>
-    <origin rpy="0 0 0" xyz="0.45 -0.4 -1.55"/>
-  </joint>
-
-  <link name="right_back_wheel">
-    <visual>
-      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
-      <geometry>
-        <cylinder length="0.1" radius="0.035"/>
-      </geometry>
-      <material name="black"/>
-    </visual>
-  </link>
-  <joint name="right_back_wheel_joint" type="continuous">
-    <axis rpy="0 0 0" xyz="0 3 0"/>
-    <parent link="right_base"/>
-    <child link="right_back_wheel"/>
-    <origin rpy="0 0 0" xyz="-0.45 -0.4 -1.55"/>
-  </joint>
-
-  <link name="left_base">
-    <visual>
-      <geometry>
-        <box size="1 0.1 0.1"/>
-      </geometry>
-      <material name="white"/>
-      <origin xyz="0 0.4 -1.5"/>
-    </visual>
-  </link>
-
-  <joint name="left_base_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="left_base"/>
-    <origin xyz="0 0 -0.05"/>
-  </joint>
-
-<link name="left_front_wheel">
-    <visual>
-      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
-      <geometry>
-        <cylinder length="0.1" radius="0.035"/>
-      </geometry>
-      <material name="black"/>
-    </visual>
-  </link>
-  <joint name="left_front_wheel_joint" type="continuous">
-    <axis rpy="0 0 0" xyz="0 3 0"/>
-    <parent link="left_base"/>
-    <child link="left_front_wheel"/>0.38 0.1
-    <origin rpy="0 0 0" xyz="0.45 0.4 -1.55"/>
-  </joint>
-
-<link name="left_back_wheel">
-    <visual>
-      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
-      <geometry>
-        <cylinder length="0.1" radius="0.035"/>
-      </geometry>
-      <material name="black"/>
-    </visual>
-  </link>
-
-  <joint name="left_back_wheel_joint" type="continuous">
-    <axis rpy="0 0 0" xyz="0 3 0"/>
-    <parent link="left_base"/>
-    <child link="left_back_wheel"/>
-    <origin rpy="0 0 0" xyz="-0.45 0.4 -1.55"/>
-  </joint>
-
-
-<m_joint name="${link_00_name}__${left_joint}" type="revolute"
+<m_joint name="${link_00_name}__${link_11_name}" type="revolute"
            axis_xyz="0 0 1"
            origin_rpy="-1.57 0 0" origin_xyz="0 -0.5 0.7"
-           parent="${link_00_name}" child="${left_joint}"
+           parent="${link_00_name}" child="${link_11_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
   
-  <m_link_cylinder name="${left_joint}"
+  <m_link_cylinder name="${link_11_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.2"
               mass="157.633"
               ixx="13.235" ixy="0" ixz="0"
@@ -282,13 +183,13 @@
               izz="9.655"
               length="0.4" radius="0.35" />
 
-<m_joint name="${left_joint}__${cylinder_1}" type="revolute"
+<m_joint name="${link_11_name}__${link_12_name}" type="revolute"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
-           parent="left_joint" child="cylinder_1"
+           parent="${link_11_name}" child="${link_12_name}"
            limit_e="5000" limit_l="0" limit_u="1.0" limit_v="0.5" />
            
-  <m_link_cylinder name="${cylinder_1}"
+  <m_link_cylinder name="${link_12_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
               mass="57.906"
               ixx="12.679" ixy="0" ixz="0"
@@ -296,13 +197,13 @@
               izz="0.651"
               radius="0.15" length="0.8" /> 
 
-<m_joint name="${cylinder_1}__${cylinder2}" type="revolute"
+<m_joint name="${link_12_name}__${link_13_name}" type="revolute"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
-           parent="cylinder_1" child="cylinder2"
+           parent="${link_12_name}" child="${link_13_name}"
            limit_e="5000" limit_l="0" limit_u="1.3" limit_v="0.5" />
            
-  <m_link_cylinder name="${cylinder2}"
+  <m_link_cylinder name="${link_13_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
               mass="57.906"
               ixx="12.679" ixy="0" ixz="0"
@@ -310,13 +211,13 @@
               izz="0.651"
               radius="0.15" length="0.8" />
               
-  <m_joint name="${cylinder2}__${cylinder3}" type="revolute"
+  <m_joint name="${link_13_name}__${link_14_name}" type="revolute"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
-           parent="cylinder2" child="cylinder3"
+           parent="${link_13_name}" child="${link_14_name}"
            limit_e="5000" limit_l="0" limit_u="1.5" limit_v="0.5" />
            
-  <m_link_cylinder name="${cylinder3}"
+  <m_link_cylinder name="${link_14_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
               mass="57.906"
               ixx="12.679" ixy="0" ixz="0"
@@ -324,13 +225,13 @@
               izz="0.651"
               radius="0.15" length="0.8" />
               
-  <m_joint name="${cylinder3}__${cylinder4}" type="revolute"
+  <m_joint name="${link_14_name}__${link_15_name}" type="revolute"
            axis_xyz="0 0 1"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
-           parent="cylinder3" child="cylinder4"
+           parent="${link_14_name}" child="${link_15_name}"
            limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
-  <m_link_cylinder name="${cylinder4}"
+  <m_link_cylinder name="${link_15_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.125"
               mass="18.056"
               ixx="0.479" ixy="0" ixz="0"
