@@ -24,3 +24,23 @@ joint5_position_controller:
   type: effort_controllers/JointPositionController
   joint: link_04__link_05
   pid: {p: 700.0, i: 50, d: 70.0}
+joint11_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: base_link__link_11
+  pid: {p: 2000.0, i: 100, d: 500.0}
+joint12_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: link_11__link_12
+  pid: {p: 50000.0, i: 100, d: 2000.0}
+joint13_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: link_12__link_13
+  pid: {p: 20000.0, i: 50, d: 1000.0}
+joint14_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: link_13__link_14
+  pid: {p: 2000.0, i: 50, d: 200.0}
+joint15_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: link_14__link_15
+  pid: {p: 700.0, i: 50, d: 70.0}

@@ -30,6 +30,11 @@
             joint3_position_controller
             joint4_position_controller
             joint5_position_controller
+            joint11_position_controller
+            joint12_position_controller
+            joint13_position_controller
+            joint14_position_controller
+            joint15_position_controller
             --timeout 60"></node>
 
 
@@ -42,10 +47,10 @@
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="debug" value="$(arg debug)" />
         <arg name="gui" value="$(arg gui)" />
-        <arg name="paused" value="$(arg paused)" />
-        <arg name="use_sim_time" value="$(arg use_sim_time)" />
-        <arg name="headless" value="$(arg headless)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
         <!-- arg name="world_name" value="$(find task_1)/world/tutorial_testing.world"/ -->
-    </include>
+        </include>
 
 </launch>
