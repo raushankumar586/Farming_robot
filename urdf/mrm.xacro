@@ -19,7 +19,7 @@
               
   <m_joint name="${link_00_name}__${link_01_name}" type="revolute"
            axis_xyz="0 0 1"
-           origin_rpy="105 0 0" origin_xyz="0 0.5 0.7"
+           origin_rpy="-1.57 0 0" origin_xyz="0 0.5 0.7"
            parent="${link_00_name}" child="${link_01_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
@@ -269,7 +269,7 @@
 
 <m_joint name="${link_00_name}__${left_joint}" type="revolute"
            axis_xyz="0 0 1"
-           origin_rpy="105 0 0" origin_xyz="0 -0.5 0.7"
+           origin_rpy="-1.57 0 0" origin_xyz="0 -0.5 0.7"
            parent="${link_00_name}" child="${left_joint}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
@@ -338,15 +338,7 @@
               izz="0.204"
               radius="0.15" length="0.25" />
  
-  
-              
- 
   <!-- END - Robot description -->
-   
-  
-              
-  
-
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
