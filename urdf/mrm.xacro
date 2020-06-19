@@ -8,18 +8,19 @@
   <!-- END - Include -->
   
   <!-- BGN - Robot description -->
-  <m_link_box name="${link_00_name}"
+  <m_link_box name="${link_00_name}" 
               origin_rpy="0 0 0" origin_xyz="0 0 0"
               mass="1024"
               ixx="170.667" ixy="0" ixz="0"
               iyy="170.667" iyz="0"
               izz="170.667"
-              size="1 1 1" />
+              size="1 1 3" />
+  
               
   <m_joint name="${link_00_name}__${link_01_name}" type="revolute"
            axis_xyz="0 0 1"
-           origin_rpy="0 0 0" origin_xyz="0 0 0.5"
-           parent="base_link" child="link_01"
+           origin_rpy="105 0 0" origin_xyz="0 0.5 0.7"
+           parent="${link_00_name}" child="${link_01_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
   
@@ -31,12 +32,13 @@
               izz="9.655"
               length="0.4" radius="0.35" />
   
-              
+
+
   <m_joint name="${link_01_name}__${link_02_name}" type="revolute"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 0.4"
            parent="link_01" child="link_02"
-           limit_e="1000" limit_l="0" limit_u="0.5" limit_v="0.5" />
+           limit_e="5000" limit_l="0" limit_u="1.0" limit_v="0.5" />
            
   <m_link_cylinder name="${link_02_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
@@ -50,7 +52,7 @@
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 0.8"
            parent="link_02" child="link_03"
-           limit_e="1000" limit_l="0" limit_u="0.75" limit_v="0.5" />
+           limit_e="5000" limit_l="0" limit_u="1.3" limit_v="0.5" />
            
   <m_link_cylinder name="${link_03_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
@@ -64,7 +66,7 @@
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 0.8"
            parent="link_03" child="link_04"
-           limit_e="1000" limit_l="0" limit_u="0.75" limit_v="0.5" />
+           limit_e="5000" limit_l="0" limit_u="1.5" limit_v="0.5" />
            
   <m_link_cylinder name="${link_04_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
@@ -78,7 +80,7 @@
            axis_xyz="0 0 1"
            origin_rpy="0 0 0" origin_xyz="0 0 0.8"
            parent="link_04" child="link_05"
-           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
   <m_link_cylinder name="${link_05_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.125"
@@ -87,9 +89,265 @@
               iyy="0.479" iyz="0"
               izz="0.204"
               radius="0.15" length="0.25" />
-              
-  <!-- END - Robot description -->
+
+   <joint name="gripper_extension" type="fixed">
+      <parent link="${link_05_name}"/>
+      <child link="gripper_pole"/>
+      <limit effort="1000.0" lower="-0.38" upper="0" velocity="0.5"/>
+     <origin rpy="0 0 0" xyz="0.15 0 0.2"/>
+   </joint>
+
+    <link name="gripper_pole">
+      <visual>
+        <geometry>
+          <cylinder length="0.6" radius="0.01"/>
+        </geometry>
+        <origin rpy="0 0 0 " xyz="-0.15 0 0.3"/>
+      </visual>
+     </link>
+
+  <joint name="left_gripper_joint" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="-0.15 0.01 0.6"/>
+    <parent link="gripper_pole"/>
+    <child link="left_gripper"/>
+  </joint>
+
+  <link name="left_gripper">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://urdf_tutorial/meshes/l_finger.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="left_tip_joint" type="fixed">
+    <parent link="left_gripper"/>
+    <child link="left_tip"/>
+  </joint>
+
+  <link name="left_tip">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0.09137 0.00495 0"/>
+      <geometry>
+        <mesh filename="package://urdf_tutorial/meshes/l_finger_tip.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="right_gripper_joint" type="revolute">
+    <axis xyz="0 0 -1"/>
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="-0.15 -0.01 0.60"/>
+    <parent link="gripper_pole"/>
+    <child link="right_gripper"/>
+  </joint>
+
+  <link name="right_gripper">
+    <visual>
+      <origin rpy="-3.1415 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://urdf_tutorial/meshes/l_finger.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="right_tip_joint" type="fixed">
+    <parent link="right_gripper"/>
+    <child link="right_tip"/>
+  </joint>
+
+  <link name="right_tip">
+    <visual>
+      <origin rpy="-3.1415 0 0" xyz="0.09137 0.00495 0"/>
+      <geometry>
+        <mesh filename="package://urdf_tutorial/meshes/l_finger_tip.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+
+
+  <link name="right_base">
+    <visual>
+      <geometry>
+        <box size="1 0.1 0.1"/>
+      </geometry>
+      <material name="white"/>
+      <origin xyz="0 -0.4 -1.5"/>
+    </visual>
+  </link>
+  <joint name="right_base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_base"/>
+    <origin xyz="0 0 -0.05"/>
+  </joint>
+
+  <link name="right_front_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.035"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+  <joint name="right_front_wheel_joint" type="continuous">
+    <axis rpy="0 0 0" xyz="0 3 0"/>
+    <parent link="right_base"/>
+    <child link="right_front_wheel"/>
+    <origin rpy="0 0 0" xyz="0.45 -0.4 -1.55"/>
+  </joint>
+
+  <link name="right_back_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.035"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="right_back_wheel_joint" type="continuous">
+    <axis rpy="0 0 0" xyz="0 3 0"/>
+    <parent link="right_base"/>
+    <child link="right_back_wheel"/>
+    <origin rpy="0 0 0" xyz="-0.45 -0.4 -1.55"/>
+  </joint>
+
+  <link name="left_base">
+    <visual>
+      <geometry>
+        <box size="1 0.1 0.1"/>
+      </geometry>
+      <material name="white"/>
+      <origin xyz="0 0.4 -1.5"/>
+    </visual>
+  </link>
+
+  <joint name="left_base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_base"/>
+    <origin xyz="0 0 -0.05"/>
+  </joint>
+
+<link name="left_front_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.035"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="left_front_wheel_joint" type="continuous">
+    <axis rpy="0 0 0" xyz="0 3 0"/>
+    <parent link="left_base"/>
+    <child link="left_front_wheel"/>0.38 0.1
+    <origin rpy="0 0 0" xyz="0.45 0.4 -1.55"/>
+  </joint>
+
+<link name="left_back_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.035"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="left_back_wheel_joint" type="continuous">
+    <axis rpy="0 0 0" xyz="0 3 0"/>
+    <parent link="left_base"/>
+    <child link="left_back_wheel"/>
+    <origin rpy="0 0 0" xyz="-0.45 0.4 -1.55"/>
+  </joint>
+
+
+<m_joint name="${link_00_name}__${left_joint}" type="revolute"
+           axis_xyz="0 0 1"
+           origin_rpy="105 0 0" origin_xyz="0 -0.5 0.7"
+           parent="${link_00_name}" child="${left_joint}"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           
   
+  <m_link_cylinder name="${left_joint}"
+              origin_rpy="0 0 0" origin_xyz="0 0 -0.2"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              length="0.4" radius="0.35" />
+
+<m_joint name="${left_joint}__${cylinder_1}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
+           parent="left_joint" child="cylinder_1"
+           limit_e="5000" limit_l="0" limit_u="1.0" limit_v="0.5" />
+           
+  <m_link_cylinder name="${cylinder_1}"
+              origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
+              mass="57.906"
+              ixx="12.679" ixy="0" ixz="0"
+              iyy="12.679" iyz="0"
+              izz="0.651"
+              radius="0.15" length="0.8" /> 
+
+<m_joint name="${cylinder_1}__${cylinder2}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
+           parent="cylinder_1" child="cylinder2"
+           limit_e="5000" limit_l="0" limit_u="1.3" limit_v="0.5" />
+           
+  <m_link_cylinder name="${cylinder2}"
+              origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
+              mass="57.906"
+              ixx="12.679" ixy="0" ixz="0"
+              iyy="12.679" iyz="0"
+              izz="0.651"
+              radius="0.15" length="0.8" />
+              
+  <m_joint name="${cylinder2}__${cylinder3}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
+           parent="cylinder2" child="cylinder3"
+           limit_e="5000" limit_l="0" limit_u="1.5" limit_v="0.5" />
+           
+  <m_link_cylinder name="${cylinder3}"
+              origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
+              mass="57.906"
+              ixx="12.679" ixy="0" ixz="0"
+              iyy="12.679" iyz="0"
+              izz="0.651"
+              radius="0.15" length="0.8" />
+              
+  <m_joint name="${cylinder3}__${cylinder4}" type="revolute"
+           axis_xyz="0 0 1"
+           origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
+           parent="cylinder3" child="cylinder4"
+           limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           
+  <m_link_cylinder name="${cylinder4}"
+              origin_rpy="0 0 0" origin_xyz="0 0 -0.125"
+              mass="18.056"
+              ixx="0.479" ixy="0" ixz="0"
+              iyy="0.479" iyz="0"
+              izz="0.204"
+              radius="0.15" length="0.25" />
+ 
+  
+              
+ 
+  <!-- END - Robot description -->
+   
+  
+              
+  
+
+
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
     </plugin>

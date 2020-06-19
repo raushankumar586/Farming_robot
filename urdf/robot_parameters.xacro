@@ -6,4 +6,9 @@
   <xacro:property name="link_03_name" value="link_03" />
   <xacro:property name="link_04_name" value="link_04" />
   <xacro:property name="link_05_name" value="link_05" />
+  <xacro:property name="left_joint" value="left_joint" />
+  <xacro:property name="cylinder_1" value="cylinder_1" />
+  <xacro:property name="cylinder2" value="cylinder2" />
+  <xacro:property name="cylinder3" value="cylinder3" />
+  <xacro:property name="cylinder4" value="cylinder4" />
 </robot>
