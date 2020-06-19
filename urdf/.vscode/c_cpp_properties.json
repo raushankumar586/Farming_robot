@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/raushan/catkin_ws/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/raushan/catkin_ws/src/farming_robot/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/hector_costmap/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/RPLidar_Hector_SLAM/hector_slam/hector_geotiff/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/RPLidar_Hector_SLAM/hector_slam/hector_map_tools/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/RPLidar_Hector_SLAM/hector_slam/hector_mapping/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/RPLidar_Hector_SLAM/hector_slam/hector_marker_drawing/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/nav_planner/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/rosserial/rosserial_server/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/rosserial/rosserial_test/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/slamware_ros_sdk_linux-x86_64-gcc5.4/src/slamware_ros_sdk/include/**",
+                "/home/raushan/catkin_ws/src/mitra_ros/ros_kinetic/slamware_ros_sdk_linux-x86_64-gcc5.4/src/slamware_sdk/include/**",
+                "/home/raushan/catkin_ws/src/audio_common/sound_play/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++14"
+        }
+    ],
+    "version": 4
+}
