@@ -10,10 +10,10 @@
   <!-- BGN - Robot description -->
   <m_link_cylinder name="${link_00_name}" 
               origin_rpy="0 0 0" origin_xyz="0 0 0"
-              mass="10240"
-              ixx="1700.667" ixy="0" ixz="0"
-              iyy="1700.667" iyz="0"
-              izz="1700.667"
+              mass="102400"
+              ixx="17000.667" ixy="0" ixz="0"
+              iyy="17000.667" iyz="0"
+              izz="17000.667"
               length="4" radius="0.5" />
 
               
@@ -170,7 +170,7 @@
 
 <m_joint name="${link_00_name}__${link_11_name}" type="revolute"
            axis_xyz="0 0 1"
-           origin_rpy="-1.57 0 0" origin_xyz="0 -0.5 0.7"
+           origin_rpy="-1.57 0 0" origin_xyz="0 -0.5 1.5"
            parent="${link_00_name}" child="${link_11_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
