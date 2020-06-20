@@ -7,7 +7,7 @@
     <arg name="debug" default="false" />
 
 
-    <group ns="/mrm">
+    <group ns="/hands">
 
 
         <!-- Robot model -->
@@ -23,7 +23,7 @@
         <rosparam command="load" file="$(find mrm_description)/config/joints.yaml" />
 
         <!-- Controllers -->
-        <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/mrm" args="--namespace=/mrm
+        <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/hands" args="--namespace=/hands
             joint_state_controller
             joint1_position_controller
             joint2_position_controller
