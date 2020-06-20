@@ -43,8 +43,8 @@
   <m_link_cylinder name="${link_02_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
               mass="57.906"
-              ixx="12.679" ixy="0" ixz="0"
-              iyy="12.679" iyz="0"
+              ixx="6.0" ixy="0" ixz="0"
+              iyy="6.0" iyz="0"
               izz="0.651"
               radius="0.15" length="0.8" />
               
@@ -56,9 +56,9 @@
            
   <m_link_cylinder name="${link_03_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
-              mass="57.906"
-              ixx="12.679" ixy="0" ixz="0"
-              iyy="12.679" iyz="0"
+              mass="25.906"
+              ixx="3.0" ixy="0" ixz="0"
+              iyy="3.0" iyz="0"
               izz="0.651"
               radius="0.12" length="0.8" />
               
@@ -70,9 +70,9 @@
            
   <m_link_cylinder name="${link_04_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
-              mass="57.906"
-              ixx="12.679" ixy="0" ixz="0"
-              iyy="12.679" iyz="0"
+              mass="10.906"
+              ixx="1.2679" ixy="0" ixz="0"
+              iyy="1.2679" iyz="0"
               izz="0.651"
               radius="0.08" length="0.8" />
               
@@ -84,7 +84,7 @@
            
   <m_link_cylinder name="${link_05_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.125"
-              mass="18.056"
+              mass="5.056"
               ixx="0.564" ixy="0" ixz="0"
               iyy="0.564" iyz="0"
               izz="0.564"
@@ -177,7 +177,7 @@
   
   <m_link_cylinder name="${link_11_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.2"
-              mass="157.633"
+              mass="100.633"
               ixx="13.235" ixy="0" ixz="0"
               iyy="13.235" iyz="0"
               izz="9.655"
@@ -192,8 +192,8 @@
   <m_link_cylinder name="${link_12_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
               mass="57.906"
-              ixx="12.679" ixy="0" ixz="0"
-              iyy="12.679" iyz="0"
+              ixx="6.679" ixy="0" ixz="0"
+              iyy="6.679" iyz="0"
               izz="0.651"
               radius="0.15" length="0.8" /> 
 
@@ -205,9 +205,9 @@
            
   <m_link_cylinder name="${link_13_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
-              mass="57.906"
-              ixx="12.679" ixy="0" ixz="0"
-              iyy="12.679" iyz="0"
+              mass="25.906"
+              ixx="3.0" ixy="0" ixz="0"
+              iyy="3.0" iyz="0"
               izz="0.651"
               radius="0.12" length="0.8" />
               
@@ -219,9 +219,9 @@
            
   <m_link_cylinder name="${link_14_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
-              mass="57.906"
-              ixx="12.679" ixy="0" ixz="0"
-              iyy="12.679" iyz="0"
+              mass="10.906"
+              ixx="1.279" ixy="0" ixz="0"
+              iyy="1.279" iyz="0"
               izz="0.651"
               radius="0.08" length="0.8" />
               
@@ -233,7 +233,7 @@
            
   <m_link_cylinder name="${link_15_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.125"
-              mass="18.056"
+              mass="5.056"
               ixx="0.479" ixy="0" ixz="0"
               iyy="0.479" iyz="0"
               izz="0.204"
