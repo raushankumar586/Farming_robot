@@ -90,6 +90,71 @@
               izz="0.564"
               radius="0.05" length="0.25" />
 
+  <!-- adding gripper here -->
+
+  <joint name="left_gripper_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5" />
+    <origin rpy="-1.57 0 0" xyz="0.0 0.0 0.25" />
+    <parent link="${link_05_name}" />
+    <child link="left_gripper" />
+  </joint>
+
+  <link name="left_gripper">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} "/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="left_tip_joint" type="fixed">
+    <parent link="left_gripper" />
+    <child link="left_tip" />
+  </joint>
+
+  <link name="left_tip">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0.09137 0.00495 0" />
+      <geometry>
+        <mesh filename="package://mrm_description/meshes/l_finger_tip.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="right_gripper_joint" type="revolute">
+    <axis xyz="0 0 -1" />
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5" />
+    <origin rpy="-1.57 0 0" xyz="0.0 0.0 0.25" />
+    <parent link="${link_05_name}" />
+    <child link="right_gripper" />
+  </joint>
+
+  <link name="right_gripper">
+    <visual>
+      <origin rpy="-3.1415 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="right_tip_joint" type="fixed">
+    <parent link="right_gripper" />
+    <child link="right_tip" />
+  </joint>
+
+  <link name="right_tip">
+    <visual>
+      <origin rpy="-3.1415 0 0" xyz="0.09137 0.00495 0" />
+      <geometry>
+        <mesh filename="package://mrm_description/meshes/l_finger_tip.dae" scale="${scale_value} ${scale_value} ${scale_value} "/>
+      </geometry>
+    </visual>
+  </link>
+              
+              
 
 
 <m_joint name="${link_00_name}__${link_11_name}" type="revolute"
@@ -162,6 +227,7 @@
               iyy="0.479" iyz="0"
               izz="0.204"
               radius="0.05" length="0.25" />
+
  
   <!-- END - Robot description -->
 
