@@ -90,17 +90,17 @@
               izz="0.564"
               radius="0.05" length="0.25" />
 
-  <!-- adding gripper here -->
+  <!-- adding leftgripper here -->
 
-  <joint name="left_gripper_joint" type="revolute">
+  <joint name="top_left_gripper_joint" type="revolute">
     <axis xyz="0 0 1" />
     <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5" />
-    <origin rpy="-1.57 0 0" xyz="0.0 0.0 0.25" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.25" />
     <parent link="${link_05_name}" />
-    <child link="left_gripper" />
+    <child link="top_left_gripper" />
   </joint>
 
-  <link name="left_gripper">
+  <link name="top_left_gripper">
     <visual>
       <origin rpy="0.0 0 0" xyz="0 0 0" />
       <geometry>
@@ -109,12 +109,12 @@
     </visual>
   </link>
 
-  <joint name="left_tip_joint" type="fixed">
-    <parent link="left_gripper" />
-    <child link="left_tip" />
+  <joint name="top_left_tip_joint" type="fixed">
+    <parent link="top_left_gripper" />
+    <child link="top_left_tip" />
   </joint>
 
-  <link name="left_tip">
+  <link name="top_left_tip">
     <visual>
       <origin rpy="0.0 0 0" xyz="0.09137 0.00495 0" />
       <geometry>
@@ -123,15 +123,15 @@
     </visual>
   </link>
 
-  <joint name="right_gripper_joint" type="revolute">
+  <joint name="down_left_gripper_joint" type="revolute">
     <axis xyz="0 0 -1" />
     <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5" />
-    <origin rpy="-1.57 0 0" xyz="0.0 0.0 0.25" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.25" />
     <parent link="${link_05_name}" />
-    <child link="right_gripper" />
+    <child link="down_left_gripper" />
   </joint>
 
-  <link name="right_gripper">
+  <link name="down_left_gripper">
     <visual>
       <origin rpy="-3.1415 0 0" xyz="0 0 0" />
       <geometry>
@@ -140,12 +140,12 @@
     </visual>
   </link>
 
-  <joint name="right_tip_joint" type="fixed">
-    <parent link="right_gripper" />
-    <child link="right_tip" />
+  <joint name="down_left_tip_joint" type="fixed">
+    <parent link="down_left_gripper" />
+    <child link="down_left_tip" />
   </joint>
 
-  <link name="right_tip">
+  <link name="down_left_tip">
     <visual>
       <origin rpy="-3.1415 0 0" xyz="0.09137 0.00495 0" />
       <geometry>
@@ -228,12 +228,74 @@
               izz="0.204"
               radius="0.05" length="0.25" />
 
- 
+    <!-- adding right gripper here -->
+  <joint name="top_right_gripper_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 -0.25" />
+    <parent link="${link_15_name}" />
+    <child link="top_right_gripper" />
+  </joint>
+
+  <link name="top_right_gripper">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="top_right_tip_joint" type="fixed">
+    <parent link="top_right_gripper" />
+    <child link="top_right_tip" />
+  </joint>
+
+  <link name="top_right_tip">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0.09137 0.00495 0" />
+      <geometry>
+        <mesh filename="package://mrm_description/meshes/l_finger_tip.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="down_right_gripper_joint" type="revolute">
+    <axis xyz="0 0 -1" />
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 -0.25" />
+    <parent link="${link_15_name}" />
+    <child link="down_right_gripper" />
+  </joint>
+
+  <link name="down_right_gripper">
+    <visual>
+      <origin rpy="-3.1415 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="down_right_tip_joint" type="fixed">
+    <parent link="down_right_gripper" />
+    <child link="down_right_tip" />
+  </joint>
+
+  <link name="down_right_tip">
+    <visual>
+      <origin rpy="-3.1415 0 0" xyz="0.09137 0.00495 0" />
+      <geometry>
+        <mesh filename="package://mrm_description/meshes/l_finger_tip.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
+      </geometry>
+    </visual>
+  </link>
+
+
   <!-- END - Robot description -->
 
   <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    </plugin>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"></plugin>
   </gazebo>
-  
+
 </robot>
