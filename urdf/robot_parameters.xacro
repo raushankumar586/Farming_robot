@@ -19,4 +19,11 @@
   <xacro:property name="link_14_name" value="link_14" />
   <xacro:property name="link_15_name" value="link_15" />
   <xacro:property name="scale_value" value="5" />
+  <xacro:property name="scale_value" value="5" />
+  <xacro:property name="effort_value" value="10000" />
+  <xacro:property name="camera_link" value="0.25" />
+  <xacro:property name="cam_color" value="Gazebo/Red" />
+  <xacro:property name="camera_name" value="kinnect" />
+  <xacro:property name="frame_name" value="camera_link" />
+
 </robot>

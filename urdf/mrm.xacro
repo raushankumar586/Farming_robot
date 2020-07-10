@@ -509,8 +509,8 @@
 <!-- addding camera -->
 
 <joint name="camera_joint" type="fixed">
-  <axis xyz="0 1 0" />
-  <origin xyz="0 0 4.1" rpy="0 0 0"/>
+  <axis xyz="0 0 0" />
+  <origin xyz="0 0 4.5" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="camera_link"/>
 </joint>
@@ -577,22 +577,11 @@
 </gazebo>
 
 
-<joint name="camera_optical_joint" type="fixed">
-  <!-- these values have to be these values otherwise the gazebo camera
-      image won't be aligned properly with the frame it is supposedly
-      originating from -->
-  <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
-  <parent link="camera_link"/>
-  <child link="camera_link_optical"/>
-</joint>
 
-<link name="camera_link_optical">
-</link>
-
-<gazebo reference="camera_link">
+<!-- <gazebo reference="camera_link">
   <sensor type="camera" name="camera1">
     <update_rate>30.0</update_rate>
-    <camera name="head">
+    <camera name="kinetic_camera">
       <horizontal_fov>1.3962634</horizontal_fov>
       <image>
         <width>800</width>
@@ -615,7 +604,7 @@
       <cameraName>farming_robot/camera</cameraName>
       <imageTopicName>farming_robot/image_raw</imageTopicName>
       <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-      <frameName>camera_link_optical</frameName>
+      <frameName>camera_link</frameName>
       <hackBaseline>0.07</hackBaseline>
       <distortionK1>0.0</distortionK1>
       <distortionK2>0.0</distortionK2>
@@ -624,6 +613,49 @@
       <distortionT2>0.0</distortionT2>
     </plugin>
   </sensor>
-</gazebo>
+</gazebo> -->
 
+
+<gazebo reference="camera_link">
+  <sensor name="camera_link_camera" type="depth">
+    <update_rate>20</update_rate>
+    <camera>
+      <!-- <horizontal_fov>1.047198</horizontal_fov> -->
+      <horizontal_fov>2.0</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>6</far>
+      </clip>
+    </camera>
+    <plugin name="camera_link_controller" filename="libgazebo_ros_openni_kinect.so">
+      <baseline>0.2</baseline>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1.0</updateRate>
+      <cameraName>${camera_name}_ir</cameraName>
+      <imageTopicName>/${camera_name}/color/image_raw</imageTopicName>
+      <cameraInfoTopicName>/${camera_name}/color/camera_info</cameraInfoTopicName>
+      <depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
+      <depthImageInfoTopicName>/${camera_name}/depth/camera_info</depthImageInfoTopicName>
+      <pointCloudTopicName>/${camera_name}/depth/points</pointCloudTopicName>
+      <frameName>${frame_name}</frameName>
+      <pointCloudCutoff>0.5</pointCloudCutoff>
+      <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+      <distortionK1>0.00000001</distortionK1>
+      <distortionK2>0.00000001</distortionK2>
+      <distortionK3>0.00000001</distortionK3>
+      <distortionT1>0.00000001</distortionT1>
+      <distortionT2>0.00000001</distortionT2>
+      <CxPrime>0</CxPrime>
+      <Cx>0</Cx>
+      <Cy>0</Cy>
+      <focalLength>0</focalLength>
+      <hackBaseline>0</hackBaseline>
+    </plugin>
+  </sensor>
+</gazebo>
 </robot>
