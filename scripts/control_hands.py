@@ -38,13 +38,9 @@ def position_control(j1=0,j2=0,j3=0,j4=0,j5=0,j11=0,j12=0,j13=0,j14=0,j15=0):
         joint15_pub.publish(j15)
 
 
-        
-    
-
-
 def main():
     rospy.init_node("control_hands", anonymous=True)
-    # position_control(0.0,0.5,0.8,0.4,0.6, -0.0,-0.5,-0.8,-0.4,-0.6)
+    #position_control(0.0,0.5,0.8,0.4,0.6, -0.0,-0.5,-0.8,-0.4,-0.6)
     position_control()
     rospy.spin()
 

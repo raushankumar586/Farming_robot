@@ -2,7 +2,7 @@
 
 <robot name="mrm" xmlns:xacro="http://www.ros.org/wiki/xacro">
   
-  <!-- BGN - Include -->
+  <!-- BGN - Include make done  -->
   <xacro:include filename="$(find mrm_description)/urdf/robot_parameters.xacro" />
   <xacro:include filename="$(find mrm_description)/urdf/links_joints.xacro" />
   <!-- END - Include -->
@@ -21,12 +21,12 @@
            axis_xyz="0 0 1"
            origin_rpy="-1.57 0 0" origin_xyz="0 0.5 3.5"
            parent="${link_00_name}" child="${link_01_name}"
-           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           limit_e="10000000" limit_l="-3.14" limit_u="3.14" limit_v="2.5" />
            
   
   <m_link_cylinder name="${link_01_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.2"
-              mass="100"
+              mass="15"
               ixx="13.235" ixy="0" ixz="0"
               iyy="13.235" iyz="0"
               izz="9.655"
@@ -36,58 +36,58 @@
 
   <m_joint name="${link_01_name}__${link_02_name}" type="revolute"
            axis_xyz="0 1 0"
-           origin_rpy="0 0 0" origin_xyz="0 0 0.4"
+           origin_rpy="-1.57 0 0" origin_xyz="0 0 0.4"
            parent="link_01" child="link_02"
-           limit_e="5000" limit_l="0" limit_u="1.57" limit_v="0.5" />
+           limit_e="5000" limit_l="0" limit_u="1.57" limit_v="2.5" />
            
   <m_link_cylinder name="${link_02_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
-              mass="57.906"
+              mass="9.0"
               ixx="6.0" ixy="0" ixz="0"
               iyy="6.0" iyz="0"
-              izz="0.651"
+              izz="0.6521"
               radius="0.15" length="0.8" />
               
   <m_joint name="${link_02_name}__${link_03_name}" type="revolute"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 0.8"
            parent="link_02" child="link_03"
-           limit_e="5000" limit_l="0" limit_u="1.57" limit_v="0.5" />
+           limit_e="5000" limit_l="0" limit_u="1.57" limit_v="2.5" />
            
   <m_link_cylinder name="${link_03_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
-              mass="25.906"
-              ixx="3.0" ixy="0" ixz="0"
-              iyy="3.0" iyz="0"
-              izz="0.651"
+              mass="5.0"
+              ixx="1.0" ixy="0" ixz="0"
+              iyy="1.0" iyz="0"
+              izz="0.0651"
               radius="0.12" length="0.8" />
               
   <m_joint name="${link_03_name}__${link_04_name}" type="revolute"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 0.8"
            parent="link_03" child="link_04"
-           limit_e="5000" limit_l="0" limit_u="1.57" limit_v="0.5" />
+           limit_e="5000" limit_l="0" limit_u="1.57" limit_v="2.5" />  
            
   <m_link_cylinder name="${link_04_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
-              mass="10.906"
-              ixx="1.2679" ixy="0" ixz="0"
-              iyy="1.2679" iyz="0"
-              izz="0.651"
+              mass="1.0"
+              ixx="0.63" ixy="0" ixz="0"
+              iyy="0.63" iyz="0"
+              izz="0.0651"
               radius="0.08" length="0.8" />
               
   <m_joint name="${link_04_name}__${link_05_name}" type="revolute"
            axis_xyz="0 0 1"
            origin_rpy="0 0 0" origin_xyz="0 0 0.8"
            parent="link_04" child="link_05"
-           limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="2.5" />
            
   <m_link_cylinder name="${link_05_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.125"
-              mass="5.056"
-              ixx="0.564" ixy="0" ixz="0"
-              iyy="0.564" iyz="0"
-              izz="0.564"
+              mass="0.5"
+              ixx="0.25" ixy="0" ixz="0"
+              iyy="0.25" iyz="0"
+              izz="0.0564"
               radius="0.05" length="0.25" />
 
   <!-- adding leftgripper here -->
@@ -161,12 +161,12 @@
            axis_xyz="0 0 1"
            origin_rpy="-1.57 0 0" origin_xyz="0 -0.5 3.5"
            parent="${link_00_name}" child="${link_11_name}"
-           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           limit_e="10000000" limit_l="-3.14" limit_u="3.14" limit_v="2.5" />
            
   
   <m_link_cylinder name="${link_11_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.2"
-              mass="100.633"
+              mass="15.0"
               ixx="13.235" ixy="0" ixz="0"
               iyy="13.235" iyz="0"
               izz="9.655"
@@ -174,15 +174,15 @@
 
 <m_joint name="${link_11_name}__${link_12_name}" type="revolute"
            axis_xyz="0 1 0"
-           origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
+           origin_rpy="1.57 0 0" origin_xyz="0 0 -0.4"
            parent="${link_11_name}" child="${link_12_name}"
-           limit_e="5000" limit_l="-1.57" limit_u="0" limit_v="0.5" />
+           limit_e="5000" limit_l="-1.57" limit_u="0" limit_v="2.5" />
            
   <m_link_cylinder name="${link_12_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
-              mass="57.906"
-              ixx="6.679" ixy="0" ixz="0"
-              iyy="6.679" iyz="0"
+              mass="9.0"
+              ixx="6.0" ixy="0" ixz="0"
+              iyy="6.0" iyz="0"
               izz="0.651"
               radius="0.15" length="0.8" /> 
 
@@ -190,48 +190,48 @@
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
            parent="${link_12_name}" child="${link_13_name}"
-           limit_e="5000" limit_l="-1.57" limit_u="0" limit_v="0.5" />
+           limit_e="5000" limit_l="-1.57" limit_u="0" limit_v="2.5" />
            
   <m_link_cylinder name="${link_13_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
-              mass="25.906"
-              ixx="3.0" ixy="0" ixz="0"
-              iyy="3.0" iyz="0"
-              izz="0.651"
+              mass="5.0"
+              ixx="1.0" ixy="0" ixz="0"
+              iyy="1.0" iyz="0"
+              izz="0.0651"
               radius="0.12" length="0.8" />
               
   <m_joint name="${link_13_name}__${link_14_name}" type="revolute"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
            parent="${link_13_name}" child="${link_14_name}"
-           limit_e="5000" limit_l="-1.57" limit_u="0" limit_v="0.5" />
+           limit_e="5000" limit_l="-1.57" limit_u="0" limit_v="2.5" />
            
   <m_link_cylinder name="${link_14_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
-              mass="10.906"
-              ixx="1.279" ixy="0" ixz="0"
-              iyy="1.279" iyz="0"
-              izz="0.651"
+              mass="1.0"
+              ixx="0.63" ixy="0" ixz="0"
+              iyy="0.63" iyz="0"
+              izz="0.0651"
               radius="0.08" length="0.8" />
               
   <m_joint name="${link_14_name}__${link_15_name}" type="revolute"
            axis_xyz="0 0 1"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
            parent="${link_14_name}" child="${link_15_name}"
-           limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="2.5" />
            
   <m_link_cylinder name="${link_15_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.125"
-              mass="5.056"
-              ixx="0.479" ixy="0" ixz="0"
-              iyy="0.479" iyz="0"
-              izz="0.204"
+              mass="0.5"
+              ixx="0.25" ixy="0" ixz="0"
+              iyy="0.25" iyz="0"
+              izz="0.0564"
               radius="0.05" length="0.25" />
 
-    <!-- adding right gripper here -->
+    <!-- adding right gripper here save -->
   <joint name="top_right_gripper_joint" type="revolute">
     <axis xyz="0 0 1" />
-    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5" />
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="2.5" />
     <origin rpy="0 0 0" xyz="0.0 0.0 -0.25" />
     <parent link="${link_15_name}" />
     <child link="top_right_gripper" />
@@ -506,6 +506,48 @@
 </joint>
 
 
+<!-- addding camera -->
+
+<joint name="camera_joint" type="fixed">
+  <axis xyz="0 1 0" />
+  <origin xyz="0 0 4.1" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera_link"/>
+</joint>
+
+<!-- Camera -->
+<link name="camera_link">
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+  <box size="${camera_link} ${camera_link} ${camera_link}"/>
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+  <box size="${camera_link} ${camera_link} ${camera_link}"/>
+    </geometry>
+    <material name="red"/>
+  </visual>
+
+  <inertial>
+    <mass value="1e-5" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+  </inertial>
+</link>
+
+
+<gazebo reference="camera_link">
+  <material>${cam_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+
 
   <!-- END - Robot description -->
 
@@ -523,5 +565,65 @@
     </plugin>
   </gazebo>
 
+  <gazebo>
+    <plugin name="farming_wheel" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryRate>50.0</odometryRate>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <publishTF>false</publishTF>
+    </plugin>
+</gazebo>
+
+
+<joint name="camera_optical_joint" type="fixed">
+  <!-- these values have to be these values otherwise the gazebo camera
+      image won't be aligned properly with the frame it is supposedly
+      originating from -->
+  <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+  <parent link="camera_link"/>
+  <child link="camera_link_optical"/>
+</joint>
+
+<link name="camera_link_optical">
+</link>
+
+<gazebo reference="camera_link">
+  <sensor type="camera" name="camera1">
+    <update_rate>30.0</update_rate>
+    <camera name="head">
+      <horizontal_fov>1.3962634</horizontal_fov>
+      <image>
+        <width>800</width>
+        <height>800</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>300</far>
+      </clip>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.007</stddev>
+      </noise>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>0.0</updateRate>
+      <cameraName>farming_robot/camera</cameraName>
+      <imageTopicName>farming_robot/image_raw</imageTopicName>
+      <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+      <frameName>camera_link_optical</frameName>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+    </plugin>
+  </sensor>
+</gazebo>
 
 </robot>
