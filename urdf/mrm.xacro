@@ -5,7 +5,13 @@
   <!-- BGN - Include make done  -->
   <xacro:include filename="$(find mrm_description)/urdf/robot_parameters.xacro" />
   <xacro:include filename="$(find mrm_description)/urdf/links_joints.xacro" />
-  <!-- END - Include -->
+
+  <xacro:macro name="default_inertial" params="mass">
+    <inertial>
+      <mass value="${mass}" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+  </xacro:macro>  <!-- END - Include -->
   
   <!-- BGN - Robot description -->
   <m_link_cylinder name="${link_00_name}" 
@@ -107,7 +113,18 @@
         <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} "/>
       </geometry>
     </visual>
+    <xacro:default_inertial mass="1"/>
+
   </link>
+  <transmission name="top_left_gripper_joint_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="top_left_gripper_joint_gripper_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="top_left_gripper_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
 
   <joint name="top_left_tip_joint" type="fixed">
     <parent link="top_left_gripper" />
@@ -138,7 +155,18 @@
         <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
       </geometry>
     </visual>
+    <xacro:default_inertial mass="1"/>
   </link>
+
+  <transmission name="down_left_gripper_joint_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="down_left_gripper_joint_gripper_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="down_left_gripper_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
 
   <joint name="down_left_tip_joint" type="fixed">
     <parent link="down_left_gripper" />
@@ -244,7 +272,20 @@
         <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
       </geometry>
     </visual>
+    <xacro:default_inertial mass="1"/>
+    
   </link>
+
+  <transmission name="top_right_gripper_joint_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="top_right_gripper_joint_gripper_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="top_right_gripper_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
 
   <joint name="top_right_tip_joint" type="fixed">
     <parent link="top_right_gripper" />
@@ -275,7 +316,18 @@
         <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
       </geometry>
     </visual>
+    <xacro:default_inertial mass="1"/>
   </link>
+
+  <transmission name="down_right_gripper_joint_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="down_right_gripper_joint_gripper_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="down_right_gripper_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
 
   <joint name="down_right_tip_joint" type="fixed">
     <parent link="down_right_gripper" />
@@ -510,7 +562,7 @@
 
 <joint name="camera_joint" type="fixed">
   <axis xyz="0 0 0" />
-  <origin xyz="0 0 4.5" rpy="0 0 0"/>
+  <origin xyz="0 0 4.5" rpy="0 -1.57 0"/>
   <parent link="base_link"/>
   <child link="camera_link"/>
 </joint>

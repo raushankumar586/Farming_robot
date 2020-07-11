@@ -22,6 +22,7 @@
 
     <!-- Load controllers -->
     <rosparam command="load" file="$(find mrm_description)/config/joints.yaml" />
+    <rosparam command="load" file="$(find mrm_description)/config/gripper.yaml" />
 
     <!-- Controllers -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"  args="
@@ -36,6 +37,7 @@
         joint13_position_controller
         joint14_position_controller
         joint15_position_controller
+        top_left_gripper_joint_controller
         --timeout 60"></node>
 
 
