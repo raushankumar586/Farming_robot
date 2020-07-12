@@ -120,9 +120,10 @@
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="top_left_gripper_joint_gripper_motor">
       <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </actuator>
     <joint name="top_left_gripper_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
   </transmission>
 
@@ -162,9 +163,10 @@
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="down_left_gripper_joint_gripper_motor">
       <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </actuator>
     <joint name="down_left_gripper_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
   </transmission>
 
@@ -280,9 +282,11 @@
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="top_right_gripper_joint_gripper_motor">
       <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
     </actuator>
     <joint name="top_right_gripper_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
   </transmission>
 
@@ -323,9 +327,10 @@
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="down_right_gripper_joint_gripper_motor">
       <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </actuator>
     <joint name="down_right_gripper_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
   </transmission>
 
@@ -562,7 +567,7 @@
 
 <joint name="camera_joint" type="fixed">
   <axis xyz="0 0 0" />
-  <origin xyz="0 0 4.5" rpy="0 -1.57 0"/>
+  <origin xyz="0 0 4.2" rpy="0.0 0.0 0.0"/>
   <parent link="base_link"/>
   <child link="camera_link"/>
 </joint>
@@ -572,16 +577,16 @@
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-  <box size="${camera_link} ${camera_link} ${camera_link}"/>
+      <mesh filename="package://mrm_description/meshes/kinect.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
     </geometry>
   </collision>
 
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-  <box size="${camera_link} ${camera_link} ${camera_link}"/>
+      <mesh filename="package://mrm_description/meshes/kinect.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
     </geometry>
-    <material name="red"/>
+    <!-- <material name="red"/> -->
   </visual>
 
   <inertial>
@@ -592,12 +597,12 @@
 </link>
 
 
-<gazebo reference="camera_link">
+<!-- <gazebo reference="camera_link">
   <material>${cam_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
-</gazebo>
+</gazebo> -->
 
 
 
