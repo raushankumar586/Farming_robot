@@ -120,10 +120,10 @@
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="top_left_gripper_joint_gripper_motor">
       <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </actuator>
     <joint name="top_left_gripper_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
   </transmission>
 
@@ -163,10 +163,10 @@
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="down_left_gripper_joint_gripper_motor">
       <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </actuator>
     <joint name="down_left_gripper_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
   </transmission>
 
@@ -258,97 +258,27 @@
               izz="0.0564"
               radius="0.05" length="0.25" />
 
-    <!-- adding right gripper here save -->
-  <joint name="top_right_gripper_joint" type="revolute">
+    <!-- adding basket -->
+  <joint name="basket_joint" type="fixed">
     <axis xyz="0 0 1" />
     <limit effort="1000.0" lower="0.0" upper="0.548" velocity="2.5" />
-    <origin rpy="0 0 0" xyz="0.0 0.0 -0.25" />
+    <origin rpy="0 -3.14, 0.0 " xyz="0.8 -0.3 0" />
     <parent link="${link_15_name}" />
-    <child link="top_right_gripper" />
+    <child link="basket_link" />
   </joint>
 
-  <link name="top_right_gripper">
+  <link name="basket_link">
     <visual>
       <origin rpy="0.0 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
+        <mesh filename="package://mrm_description/meshes/basket.dae" scale="${basket_scale} ${basket_scale} ${basket_scale} " />
       </geometry>
     </visual>
     <xacro:default_inertial mass="1"/>
     
   </link>
 
-  <transmission name="top_right_gripper_joint_trans" type="SimpleTransmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="top_right_gripper_joint_gripper_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-
-    </actuator>
-    <joint name="top_right_gripper_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-  </transmission>
-
-
-  <joint name="top_right_tip_joint" type="fixed">
-    <parent link="top_right_gripper" />
-    <child link="top_right_tip" />
-  </joint>
-
-  <link name="top_right_tip">
-    <visual>
-      <origin rpy="0.0 0 0" xyz="0.09137 0.00495 0" />
-      <geometry>
-        <mesh filename="package://mrm_description/meshes/l_finger_tip.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
-      </geometry>
-    </visual>
-  </link>
-
-  <joint name="down_right_gripper_joint" type="revolute">
-    <axis xyz="0 0 -1" />
-    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5" />
-    <origin rpy="0 0 0" xyz="0.0 0.0 -0.25" />
-    <parent link="${link_15_name}" />
-    <child link="down_right_gripper" />
-  </joint>
-
-  <link name="down_right_gripper">
-    <visual>
-      <origin rpy="-3.1415 0 0" xyz="0 0 0" />
-      <geometry>
-        <mesh filename="package://mrm_description/meshes/l_finger.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
-      </geometry>
-    </visual>
-    <xacro:default_inertial mass="1"/>
-  </link>
-
-  <transmission name="down_right_gripper_joint_trans" type="SimpleTransmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="down_right_gripper_joint_gripper_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </actuator>
-    <joint name="down_right_gripper_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-  </transmission>
-
-  <joint name="down_right_tip_joint" type="fixed">
-    <parent link="down_right_gripper" />
-    <child link="down_right_tip" />
-  </joint>
-
-  <link name="down_right_tip">
-    <visual>
-      <origin rpy="-3.1415 0 0" xyz="0.09137 0.00495 0" />
-      <geometry>
-        <mesh filename="package://mrm_description/meshes/l_finger_tip.dae" scale="${scale_value} ${scale_value} ${scale_value} " />
-      </geometry>
-    </visual>
-  </link>
-
-
+  
 
   <!-- adding wheels -->
 

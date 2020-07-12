@@ -50,20 +50,20 @@ joint15_position_controller:
 top_left_gripper_joint_controller:
   type: effort_controllers/JointPositionController
   joint: top_left_gripper_joint
-  pid: {p: 700.0, i: 50, d: 70.0}
+  pid: {p: 1.0, i: 0.0, d: 0.0}
 
 top_right_gripper_joint_controller:
   type: effort_controllers/JointPositionController
   joint: top_right_gripper_joint
-  pid: {p: 700.0, i: 50, d: 70.0}
+  pid: {p: 1.0, i: 0.0, d: 0.0}
 
 down_left_gripper_joint_controller:
   type: effort_controllers/JointPositionController
   joint: down_left_gripper_joint
-  pid: {p: 700.0, i: 50, d: 70.0}
+  pid: {p: 1.0, i: 0.0, d: 0.0}
 
 down_right_gripper_joint_controller:
   type: effort_controllers/JointPositionController
   joint: down_right_gripper_joint
-  pid: {p: 700.0, i: 50, d: 70.0}
+  pid: {p: 1.0, i: 0.0, d: 0.0}
 

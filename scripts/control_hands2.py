@@ -3,29 +3,41 @@ import rospy
 from std_msgs.msg import Float64 , Int8, String
 
 joint1_pub = rospy.Publisher(
-    "/hands/joint1_position_controller/command", Float64, queue_size=2)
+    "/joint1_position_controller/command", Float64, queue_size=2)
 joint2_pub = rospy.Publisher(
-    "/hands/joint2_position_controller/command", Float64, queue_size=10)
+    "/joint2_position_controller/command", Float64, queue_size=10)
 joint3_pub = rospy.Publisher(
-    "/hands/joint3_position_controller/command", Float64, queue_size=2)
+    "/joint3_position_controller/command", Float64, queue_size=2)
 joint4_pub = rospy.Publisher(
-    "/hands/joint4_position_controller/command", Float64, queue_size=2)
+    "/joint4_position_controller/command", Float64, queue_size=2)
 joint5_pub = rospy.Publisher(
-    "/hands/joint5_position_controller/command", Float64, queue_size=2)
+    "/joint5_position_controller/command", Float64, queue_size=2)
 joint11_pub = rospy.Publisher(
-    "/hands/joint11_position_controller/command", Float64, queue_size=2)
+    "/joint11_position_controller/command", Float64, queue_size=2)
 joint12_pub = rospy.Publisher(
-    "/hands/joint12_position_controller/command", Float64, queue_size=2)
+    "/joint12_position_controller/command", Float64, queue_size=2)
 joint13_pub = rospy.Publisher(
-    "/hands/joint13_position_controller/command", Float64, queue_size=2)
+    "/joint13_position_controller/command", Float64, queue_size=2)
 joint14_pub = rospy.Publisher(
-    "/hands/joint14_position_controller/command", Float64, queue_size=2)
+    "/joint14_position_controller/command", Float64, queue_size=2)
 joint15_pub = rospy.Publisher(
-    "/hands/joint15_position_controller/command", Float64, queue_size=2)
+    "/joint15_position_controller/command", Float64, queue_size=2)
+
+left_top = rospy.Publisher(
+    "/top_left_gripper_joint_controller/command", Float64, queue_size=2)
+left_down = rospy.Publisher(
+    "/down_left_gripper_joint_controller/command", Float64, queue_size=2)
+
+right_top = rospy.Publisher(
+    "/top_right_gripper_joint_controller/command", Float64, queue_size=2)
+right_down = rospy.Publisher(
+    "/down_right_gripper_joint_controller/command", Float64, queue_size=2)
+
+
 
 hand  = 1.0 
 
-def position_control(j1=0,j2=0,j3=0,j4=0,j5=0,j11=0,j12=0,j13=0,j14=0,j15=0):
+def position_control(j1=0,j2=0,j3=0,j4=0,j5=0,j11=0,j12=0,j13=0,j14=0,j15=0, lt=0, ld=0,rt=0,rd=0):
     
     joint1_pub.publish(j1)
     joint2_pub.publish(j2)
@@ -37,6 +49,11 @@ def position_control(j1=0,j2=0,j3=0,j4=0,j5=0,j11=0,j12=0,j13=0,j14=0,j15=0):
     joint13_pub.publish(j13)
     joint14_pub.publish(j14)
     joint15_pub.publish(j15)
+    left_top.publish(lt)
+    left_down.publish(ld)
+    right_top.publish(rt)
+    right_down.publish(rd)
+    
 
 def position_control_left(j11=0,j12=0,j13=0,j14=0,j15=0):
     joint11_pub.publish(j11)
@@ -94,11 +111,11 @@ def callback(GST):
          position_control()
          
     elif Gesture == 3.0 :
-        position_control(-0.10,1.57, 0.0,1.57,0.25, 0.10,-1.57,-0.0,-1.57,0.25)
+        position_control(-0.10,1.57, 0.0,1.57,0.25, 0.10,-1.57,-0.0,-1.57,0.25,5.0,5.0,5.0,5.0)
     elif Gesture == 4.0 :
-        position_control(-1.46,1.57,0.04,0.0,-0.42, 1.55,0.0,-1.57,0.0,0.0,)
+        position_control(-1.46,1.57,0.04,0.0,-0.42, 1.55,0.0,-1.57,0.0,0.0)
     elif Gesture == 5.0 :
-        position_control(0,0.1, 0.2,0.3,0.4, -0,-0.1, -0.2,-0.3,-0.4,)
+        position_control(0,0.1, 0.2,0.3,0.4, -0,-0.1, -0.2,-0.3,-0.4)
     else:
         print('Exited')
     pass
