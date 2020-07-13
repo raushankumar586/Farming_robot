@@ -38,9 +38,7 @@
         joint14_position_controller
         joint15_position_controller
         top_left_gripper_joint_controller
-        top_right_gripper_joint_controller
         down_left_gripper_joint_controller
-        down_right_gripper_joint_controller
         --timeout 60"></node>
 
 
