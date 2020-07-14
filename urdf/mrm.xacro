@@ -83,7 +83,7 @@
               radius="0.08" length="0.8" />
               
   <m_joint name="${link_04_name}__${link_05_name}" type="revolute"
-           axis_xyz="0 0 1"
+           axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 0.8"
            parent="link_04" child="link_05"
            limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="2.5" />

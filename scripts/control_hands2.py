@@ -24,14 +24,9 @@ joint15_pub = rospy.Publisher(
     "/joint15_position_controller/command", Float64, queue_size=2)
 
 left_top = rospy.Publisher(
-    "/top_left_gripper_joint_controller/command", Float64, queue_size=2)
+    "/left_gripper_joint_controller/command", Float64, queue_size=2)
 left_down = rospy.Publisher(
-    "/down_left_gripper_joint_controller/command", Float64, queue_size=2)
-
-right_top = rospy.Publisher(
-    "/top_right_gripper_joint_controller/command", Float64, queue_size=2)
-right_down = rospy.Publisher(
-    "/down_right_gripper_joint_controller/command", Float64, queue_size=2)
+    "/right_gripper_joint_controller/command", Float64, queue_size=2)
 
 
 
@@ -75,6 +70,7 @@ def which_hand(hands):
 
 
 def callback(GST): 
+
     global hand
     Gesture= GST.data 
     print('Entering if condition')
@@ -94,9 +90,18 @@ def callback(GST):
     elif Gesture == 3.0:
         position_control(-0.10, 1.57, 0.0, 1.57, 0.25, 5.0, 5.0)
     elif Gesture == 4.0:
-        position_control(0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0)
+        position_control(-0.74, 0.0, 1.02, 0.12, 0.21, 1.0, 1.0) # taking up
     elif Gesture == 5.0:
-        position_control(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+        position_control(-0.74, 0.0, 0.67, -0.46, 0.821, 1.0, 1.0) # taking down
+    elif Gesture == 6.0:
+        position_control(-0.74, 0.0, 0.67, -0.46, 0.821, 0.1, 0.1) # closing gripper
+    elif Gesture == 7.0:
+        position_control(-0.74, 0.0, 1.02, 0.12, 0.21, 0.0, 0.0) # taking up
+    elif Gesture == 8.0:
+        position_control(-0.74, -0.56, 0.32, 0.0, 0.721, 0.0, 0.0) # taking side
+    elif Gesture == 9.0:
+        position_control(-0.74, -0.56, 0.32, 0.0, 0.721, 1.0, 1.0) # taking side and opening gripper 
+
     else:
         print('Exited')
     pass
