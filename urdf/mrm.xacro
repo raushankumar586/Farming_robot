@@ -41,10 +41,10 @@
 
 
   <m_joint name="${link_01_name}__${link_02_name}" type="revolute"
-           axis_xyz="0 1 0"
+           axis_xyz="1 0 0"
            origin_rpy="-1.57 0 0" origin_xyz="0 0 0.4"
            parent="link_01" child="link_02"
-           limit_e="5000" limit_l="0" limit_u="1.57" limit_v="2.5" />
+           limit_e="5000" limit_l="-1.57" limit_u="1.57" limit_v="2.5" />
            
   <m_link_cylinder name="${link_02_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0.4"
@@ -313,10 +313,10 @@
               radius="0.15" length="0.8" /> 
 
 <m_joint name="${link_12_name}__${link_13_name}" type="revolute"
-           axis_xyz="0 1 0"
+           axis_xyz="1 0 0"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
            parent="${link_12_name}" child="${link_13_name}"
-           limit_e="5000" limit_l="-1.57" limit_u="0" limit_v="2.5" />
+           limit_e="5000" limit_l="0" limit_u="1.57" limit_v="2.5" />
            
   <m_link_cylinder name="${link_13_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 -0.4"
@@ -327,7 +327,7 @@
               radius="0.12" length="0.8" />
               
   <m_joint name="${link_13_name}__${link_14_name}" type="revolute"
-           axis_xyz="0 1 0"
+           axis_xyz="1 0 0"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
            parent="${link_13_name}" child="${link_14_name}"
            limit_e="5000" limit_l="-1.57" limit_u="0" limit_v="2.5" />
@@ -341,7 +341,7 @@
               radius="0.08" length="0.8" />
               
   <m_joint name="${link_14_name}__${link_15_name}" type="revolute"
-           axis_xyz="0 0 1"
+           axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0 0 -0.8"
            parent="${link_14_name}" child="${link_15_name}"
            limit_e="5000" limit_l="-3.14" limit_u="3.14" limit_v="2.5" />
