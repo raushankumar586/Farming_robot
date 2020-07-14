@@ -64,6 +64,7 @@ def position_control_right(j1=0,j2=0,j3=0,j4=0,j5=0):
     joint3_pub.publish(j3)
     joint4_pub.publish(j4)
     joint5_pub.publish(j5)
+    rospy.logwarn("right hand callded")
 
 def which_hand(hands):
    hand= hands.data
@@ -86,6 +87,7 @@ def callback(GST):
             position_control(0.36,0.93,0.65,0.65,0.33)
     elif Gesture == 2.0 :
          position_control()
+         position_control_left()
          
     elif Gesture == 3.0:
         position_control(-0.10, 1.57, 0.0, 1.57, 0.25, 5.0, 5.0)
@@ -94,12 +96,16 @@ def callback(GST):
     elif Gesture == 5.0:
         position_control(-0.74, 0.0, 0.67, -0.46, 0.821, 1.0, 1.0) # taking down
     elif Gesture == 6.0:
-        position_control(-0.74, 0.0, 0.67, -0.46, 0.821, 0.1, 0.1) # closing gripper
+        position_control(-0.74, 0.0, 0.67, -0.46, 0.821, 0.2, 0.2) # closing gripper
     elif Gesture == 7.0:
         position_control(-0.74, 0.0, 1.02, 0.12, 0.21, 0.0, 0.0) # taking up
     elif Gesture == 8.0:
         position_control(-0.74, -0.56, 0.32, 0.0, 0.721, 0.0, 0.0) # taking side
     elif Gesture == 9.0:
+        position_control_left(-0.59, 0.00, 0.89, -0.79, 0.82) # left hand postion 
+    elif Gesture == 10.0:
+        position_control(-0.74, -0.56, 0.32, 0.0, 0.721, 1.0, 1.0) # taking side and opening gripper 
+    elif Gesture == 11.0:
         position_control(-0.74, -0.56, 0.32, 0.0, 0.721, 1.0, 1.0) # taking side and opening gripper 
 
     else:
