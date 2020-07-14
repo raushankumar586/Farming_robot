@@ -1,0 +1,24 @@
+# type: "position_controllers/JointGroupPositionController"
+# joints:
+#  - gripper_extension
+#  - left_gripper_joint
+#  - right_gripper_joint
+
+
+gripper_ext:
+    type: position_controllers/JointPositionController
+    joint: gripper_extension
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    
+left_gripper_joint_controller:
+    type: position_controllers/JointPositionController
+    joint: left_gripper_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    
+right_gripper_joint_controller:
+    type: position_controllers/JointPositionController
+    joint: right_gripper_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+
+

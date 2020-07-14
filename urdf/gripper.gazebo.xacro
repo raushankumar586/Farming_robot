@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="youbot_gripper_controller">
+
+    <gazebo>
+      <plugin name="gripper_controller" filename="libyoubot_gripper_controller.so">
+        <commandTopic>gripper</commandTopic>
+      </plugin>
+   </gazebo>
+
+  </xacro:macro>
+
+</robot>
